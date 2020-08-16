@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Alef&family=Barlow+Semi+Condensed&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="uikit/css/uikit.css">
+    <script src="uikit/js/uikit.min.js"></script>
+    <script src="uikit/js/uikit-icons.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>Heimdall</title>
+</head>
+<body>
+
+    <div class="uk-navbar-container uk-margin" uk-navbar>
+        <div class="uk-navbar-left">
+            <a class="uk-navbar-item uk-logo" href="#">Heimdall</a>
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav">
+                
+                <li>
+                    <a href="https://doctordan.dev/" target="_blank">
+                        <span class="uk-icon" uk-icon="icon: world"></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://github.com/TheComputerDan/heimdall" target="_blank">
+                        <span class="uk-icon" uk-icon="icon: github"></span>
+                    </a>
+                </li>
+
+
+            </ul>
+
+        </div>
+    </div>
+
+    <h2 class="uk-text-center">
+        Introduction
+    </h2>
+
+    <div  class="uk-container uk-margin" >
+        <div class="uk-card uk-card-body uk-background-muted uk-card-hover">
+            <h3>Description:</h3>
+            <p>
+                A centralized tool for managing containers and vms across multiple hosts.
+            </p>
+
+            <h3> Why?</h3>
+            <p>
+                Both small businesses and enterprise environments can and do suffer from the need to manage multiple endpoints for
+                containers, vms, and other services of the sort. The goal of this project to create a tool that allows people to easily
+                manage different endpoints centrally.
+            </p>
+
+            <h3>Technologies:</h3>
+            <ul>
+                <li>Golang</li>
+                <li>Docker</li>
+                <li>VMWare (Planned)</li>
+            </ul>
+        </div>
+
+        
+
+        <h2 class="uk-text-center">
+            Endpoints
+        </h2>
+
+        <div class="uk-card uk-card-body uk-background-muted uk-card-hover">
+            <h3> Docker:</h3>
+            <p>
+                Leveraging the Docker API to report and manage Docker hosts.
+            </p>
+
+            <h3> VMWare:</h3>
+            <p>
+                We hope to integrate Fusion, Workstation, and ESXi. 
+                With intent to include vCenter for more advanced management.
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>

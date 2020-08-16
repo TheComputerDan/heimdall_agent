@@ -1,0 +1,112 @@
+syntax = "proto3";
+package dockerService;
+
+
+
+message ContainersRequest {
+
+}
+
+message EndpointIPAMConfig  {
+    string   IPv4Address = 1;
+    string   IPv6Address = 2;
+    repeated string LinkLocalIPs = 3;
+}
+
+message EndpointSettings {
+    EndpointIPAMConfig IPAMConfig = 1;
+    repeated string Links = 2;
+    repeated string Aliases = 3;
+    // Operational data
+    string NetworkID = 4;
+    string EndpointID = 5;
+    string Gateway = 6;
+    string IPAddress = 7;
+    int64 IPPrefixLen = 8;
+    string IPv6Gateway = 9;
+    string GlobalIPv6Address = 10;
+    int64 GlobalIPv6PrefixLen = 11;
+    string MacAddress = 12;
+    map<string,string> DriverOpts = 13;
+}
+
+message SummaryNetworkSettings {
+     map<string,EndpointSettings> Networks = 1;
+}
+
+message Port {
+    string IP = 1;
+    uint32 PrivatePort = 2;
+    uint32 PublicPort = 3;
+    string Type = 4;
+    //    PrivatePort uint16 `json:"PrivatePort"`
+    //    PublicPort uint16 `json:"PublicPort,omitempty"`
+}
+message MountPoint {
+    string Type = 1; 
+    string Name = 2;
+    string Source = 3;
+    string Destination = 4;
+    string Driver = 5;
+    string Mode = 6;
+    bool RW = 7;
+    string Propagation = 8;
+    // Type        mount.Type `json:",omitempty"`
+    // Propagation mount.Propagation
+}
+
+message ContainersResponse {
+    string ID = 1;
+    repeated string Names = 2;
+    string Image = 3;
+    string ImageID = 4;
+    string Command = 5;
+    int64 Created = 6;
+    repeated Port Ports = 7;
+    int64 SizeRw = 8;
+    int64 SizeRootFs = 9;
+    map<string,string> Labels = 10;
+    string State = 11;
+    string Status = 12;
+    string NetworkMode = 13;
+    //     HostConfig    struct {
+    //         NetworkMode string `json:",omitempty"`
+    //     }
+    SummaryNetworkSettings NetworkSettings = 14;
+    repeated MountPoint Mounts = 15;
+
+}
+
+message ImagesRequest {
+
+}
+
+message ImagesResponse {
+    int64 Containers = 1;
+    int64 Created = 2;
+    string ID = 3;
+    map<string,string> Labels = 4;
+    string ParentID = 5;
+    repeated string RepoDigests = 6;
+    repeated string RepoTags = 7;
+    int64 SharedSize = 8;
+    int64 Size = 9;
+    int64 VirtualSize = 10;
+}
+
+message HostRequest {
+
+}
+
+message HostResponse {
+    string hostname = 1;
+    string ipv4 = 2;
+    string ipv6 = 3;
+    string osType = 4;
+}
+
+service DockerAgent {
+    rpc Containers (ContainersRequest) returns (stream ContainersResponse);
+    rpc Images (ImagesRequest) returns (stream ImagesResponse);
+    rpc Host (HostRequest) returns (HostResponse);
+}
